@@ -7,7 +7,7 @@ Date.prototype.addMonths = function(months) {
   return date;
 };
 
-function getData(principal, interestPa, tenure, rs_revenue, rs_annual_growth) {
+function getData(principal, interestPa, tenure, rs_revenue, annualGrowth) {
   // let principal = 100000;
   let interest = interestPa / 100 / 12;
   let payments = tenure * 12;
@@ -16,7 +16,7 @@ function getData(principal, interestPa, tenure, rs_revenue, rs_annual_growth) {
   let rs_multiple = 3;
   let rs_rate = 5 / 100;
   let rs_current_payment = rs_monthly_revenue * rs_rate;
-  // let rs_annual_growth = 1.2;
+  let rs_annual_growth = 1 + annualGrowth/100;
   let rs_growth = Math.pow(rs_annual_growth, 1 / (12 - 1)) - 1;
   let rs_hurdle = rs_multiple * principal;
   //RS CALCULATIONS
