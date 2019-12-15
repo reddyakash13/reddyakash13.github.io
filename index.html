@@ -65,13 +65,15 @@
 <script>
 
 	function displayGraph() {
-		var hardCodedData = getData();
-		var amount = document.getElementById("amount").value;
-		var interest = document.getElementById("interest").value;
-		var tenure = document.getElementById("tenure").value;
-		var revenue = document.getElementById("revenue").value;
-		var growthRate = document.getElementById("growthRate").value;
+		d3.selectAll("svg > *").remove();
 
+		let amount = document.getElementById("amount").value;
+		let interest = document.getElementById("interest").value;
+		let tenure = document.getElementById("tenure").value;
+		let revenue = document.getElementById("revenue").value;
+		let growthRate = document.getElementById("growthRate").value;
+
+		let hardCodedData = getData(amount, interest, tenure, revenue, growthRate);
 		const parseTime = d3.timeParse('%Y-%m-%d');
 
 		let history = hardCodedData.map((d) => {
@@ -80,7 +82,6 @@
 				volume: d.lp,
 			};
 		});
-		console.log(history.length);
 
 		const historyIndex = history.map((d, i) => [i, d.volume]);
 
@@ -90,7 +91,6 @@
 				volume: d.rsp,
 			};
 		});
-		console.log(forecast.length);
 
 		const chart = d3.select('#chart');
 		const margin = { top: 20, right: 20, bottom: 30, left: 70 };
