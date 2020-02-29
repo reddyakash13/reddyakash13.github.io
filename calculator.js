@@ -49,8 +49,8 @@ function getData(principal, interestPa, tenure, rs_revenue, annualGrowth) {
         )
     );
   } else {
-    let nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-    let stopMonth = new Date(
+    var nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    var stopMonth = new Date(
         new Date(now.getFullYear() + 1, 0, 1).setMonth(
             nextMonth.getMonth() + periods
         )
